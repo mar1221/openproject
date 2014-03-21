@@ -32,7 +32,9 @@
 session_store = Rails.env.production? ? :cache_store : :cookie_store
 
 session_options = {
-  :key => '_openproject_session'
+  :key => '_openproject_session',
+  :secure => Rails.env.production?,
+  :httponly => true
 }
 
 OpenProject::Application.config.session_store session_store, session_options
